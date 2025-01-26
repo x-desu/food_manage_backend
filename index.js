@@ -37,5 +37,5 @@ app.use((error,req,res,next)=>{
 
 app.listen(process.env.PORT,()=>{
     connectDb()
-    console.log(`server started at: http://localhost:${process.env.PORT}`)
+    console.log(`server started at: ${process.env.API_URL}`)
 })
