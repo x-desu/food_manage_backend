@@ -5,7 +5,6 @@ export const orderCheckout = async(req,res) => {
 
     const {items,totalAmount} = req.body
     const userId = req.auth.id
-    console.log(items,totalAmount)
     if(!items || !totalAmount){
         return res.status(400).json({error:"order not received"})
     }
@@ -146,7 +145,7 @@ export const getOrder = async (req, res) => {
 
         // ])
 
-        console.log(orders); // For debugging
+       
         res.status(200).json(orders);
     } catch (error) {
         console.error('Error fetching orders:', error);

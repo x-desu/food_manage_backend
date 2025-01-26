@@ -27,7 +27,7 @@ export const register = async(req,res,next) => {
             await user.save()
             res.status(200).json({message:"Registered successfully"})
         } catch (error) {
-            console.log(error)
+            
             res.status(500).json({error:"Registration failed"})
         }
 }
@@ -48,7 +48,7 @@ export const login = async(req,res,next) => {
             return res.status(404).json({error:"User not found"})
         }
         const isPassValid = await bcrypt.compare(password,user.password)
-        console.log(isPassValid,password)
+        
         if(!isPassValid){
             return res.status(402).json({error:"password is not valid"})
         }
@@ -83,7 +83,7 @@ export const login = async(req,res,next) => {
             });
 
     } catch (error) {
-        console.log(error)
+        
         res.status(500).json({error:"login failed"})
     }
 }
@@ -172,7 +172,7 @@ export const updateImage = async (req, res) => {
       { image: image },
       { new: true }
     ).select('-password');
-    console.log(user,image)
+   
     // Create new token with updated user info
     const token = jwt.sign(
       { email: user.email, id: user._id, name: user.name, avatar: user.image,role:user.role },

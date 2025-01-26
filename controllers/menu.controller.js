@@ -7,7 +7,7 @@ export const getAllMenu = async(req,res,next)=>{
     const sort = req.query.sort
     const {category} = req.query
     let sortQuery = {}
-    console.log(category)
+   
     switch (sort) {
         case 'name-asc':
             sortQuery = { name: 1 }; 
@@ -46,7 +46,7 @@ export const getAllMenu = async(req,res,next)=>{
             page,
             limit
         })
-        console.log(query,menu)
+       
     } catch (error) {
         res.status(500).json({error:"No menu items found!"})
     }
@@ -92,7 +92,7 @@ export const updateMenuItem = async(req,res,next) => {
     try {
         const {id} = req.params
         const upadtedData = req.body
-        console.log(upadtedData)
+        
         const updatedMenuItem = await Menu.findByIdAndUpdate(id,upadtedData,{new:true})
         if (!updatedMenuItem) {
             return res.status(404).json({ error: 'Menu item not found' });
