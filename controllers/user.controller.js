@@ -63,7 +63,7 @@ export const login = async(req,res,next) => {
         const cookieOptions = {
             httpOnly: true, // Prevents client-side access to the cookie
             secure: process.env.NODE_ENV === 'production', // Use secure in production
-            sameSite: 'strict',
+            sameSite: 'none',
             maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds
         }
 
@@ -121,8 +121,8 @@ export const logout = (req,res,next) => {
     res.clearCookie('token', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production', 
-      sameSite: 'strict', 
-      path: '/', 
+      sameSite: 'none',
+      maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds 
     });
   
     res.send('Logout successful');
@@ -149,7 +149,7 @@ export const updateName = async (req, res) => {
     const cookieOptions = {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: 'none',
       maxAge: 24 * 60 * 60 * 1000
     };
 
@@ -184,7 +184,7 @@ export const updateImage = async (req, res) => {
     const cookieOptions = {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: 'none',
       maxAge: 24 * 60 * 60 * 1000
     };
 
